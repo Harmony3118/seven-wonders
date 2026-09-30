@@ -12,25 +12,27 @@ Ensuite le jeu consiste à sélectionner une carte parmi un paquet, en affichant
 
 - [ ] Page d'accueil
   - [x] Nombre de joueurs
-  - [ ] Extension à sélectionner
+  - [x] Extension à sélectionner
   - [ ] Sélection plateaux hasard / choix
     - [ ] Pour le choix = sélection du plateau par joueur
-  - [ ] Bouton lancer la partie
+  - [x] Bouton lancer la partie
 - [ ] Principe de jeu
   - [ ] Définir les propriétés d'une carte (dans une class)
-    - [ ] Nom
+    - [x] Age
+    - [x] Nom
     - [ ] Type (ressources primaire, ressources secondaires, commerciales, culturelles, scientifiques, guildes) + couleur
-    - [ ] Prix (Ressource(s) ou carte spécifique)
+    - [x] Prix (Ressource(s) ou carte spécifique)
     - [ ] Apport(s)
-  - [ ] Sans-doute définir une sous-class pour chaque type de carte => apports spécifique
+  - [x] Sans-doute définir une sous-class pour chaque type de carte => apports spécifique
+  - [x] Liste de toutes les cartes
   - [ ] Paquet de cartes (class pour un paquet ?)
     - [ ] Retirer une carte lorsque sélectionnée
     - [ ] Paquet vide lorsque n == 1
   - [ ] Sous-class pour diff paquet distribution et cartes sélectionnés
     - [ ] Pour carte sélectionnée, on peut pas voir 2 fois la même carte
-- [ ] Page d'accueil
-  - [ ] Afficher les cartes du paquet
-  - [ ] Afficher le nom de la carte sélectionnée
+- [ ] Page de jeu
+  - [x] Afficher les cartes du paquet
+  - [x] Afficher le nom de la carte sélectionnée
   - [ ] Afficher le nom/numéro du joueur en cours
   - [ ] Afficher les cartes déjà sélectionnées ?
 
