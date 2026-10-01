@@ -1,0 +1,709 @@
+[
+  {
+    "age": 1,
+    "nom": "Chantier",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "bois",
+    "quantite": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Cavité",
+    "type": "matierePremiere",
+    "joueur_min": 350,
+    "ressource": "pierre",
+    "quantite": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Bassin argileux",
+    "type": "matierePremiere",
+    "joueur_min": 350,
+    "ressource": "argile",
+    "quantite": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Filon",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "minerai",
+    "quantite": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Friche",
+    "type": "matierePremiere",
+    "joueur_min": 600,
+    "ressource": "bois",
+    "quantite": 1,
+    "ressource2": "argile",
+    "quantite2": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Excavation",
+    "type": "matierePremiere",
+    "joueur_min": 400,
+    "ressource": "pierre",
+    "quantite": 1,
+    "ressource2": "argile",
+    "quantite2": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Fosse argileuse",
+    "type": "matierePremiere",
+    "joueur_min": 300,
+    "ressource": "minerai",
+    "quantite": 1,
+    "ressource2": "argile",
+    "quantite2": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Exploitation forestière",
+    "type": "matierePremiere",
+    "joueur_min": 300,
+    "ressource": "bois",
+    "quantite": 1,
+    "ressource2": "pierre",
+    "quantite2": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Gisement",
+    "type": "matierePremiere",
+    "joueur_min": 500,
+    "ressource": "bois",
+    "quantite": 1,
+    "ressource2": "minerai",
+    "quantite2": 1,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Mine",
+    "type": "matierePremiere",
+    "joueur_min": 600,
+    "ressource": "pierre",
+    "quantite": 1,
+    "ressource2": "minerai",
+    "quantite2": 1,
+    "cout": []
+  },
+
+  {
+    "age": 2,
+    "nom": "Scierie",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "bois",
+    "quantite": 2,
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Carrière",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "pierre",
+    "quantite": 2,
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Briqueterie",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "argile",
+    "quantite": 2,
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Fonderie",
+    "type": "matierePremiere",
+    "joueur_min": 340,
+    "ressource": "minerai",
+    "quantite": 2,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Verrerie",
+    "type": "produitManufacture",
+    "joueur_min": 360,
+    "ressource": "verre",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Presse",
+    "type": "produitManufacture",
+    "joueur_min": 360,
+    "ressource": "papyrus",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Métier à tisser",
+    "type": "produitManufacture",
+    "joueur_min": 360,
+    "ressource": "tissu",
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Verrerie",
+    "type": "produitManufacture",
+    "joueur_min": 350,
+    "ressource": "verre",
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Presse",
+    "type": "produitManufacture",
+    "joueur_min": 350,
+    "ressource": "papyrus",
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Métier à tisser",
+    "type": "produitManufacture",
+    "joueur_min": 350,
+    "ressource": "tissu",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Puits",
+    "type": "civil",
+    "joueur_min": 470,
+    "points": 3,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Bains",
+    "type": "civil",
+    "joueur_min": 370,
+    "points": 3,
+    "cout": [["pierre", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Autel",
+    "type": "civil",
+    "joueur_min": 350,
+    "points": 3,
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Théatre",
+    "type": "civil",
+    "joueur_min": 360,
+    "points": 3,
+    "cout": []
+  },
+
+  {
+    "age": 2,
+    "nom": "Statue",
+    "type": "civil",
+    "joueur_min": 370,
+    "points": 4,
+    "cout": ["Théatre", ["minerai", 2], ["bois", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "Temple",
+    "type": "civil",
+    "joueur_min": 360,
+    "points": 4,
+    "cout": ["Autel", ["bois", 1], ["argile", 1], ["verre", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "Tribunal",
+    "type": "civil",
+    "joueur_min": 350,
+    "points": 4,
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Aqueduc",
+    "type": "civil",
+    "joueur_min": 370,
+    "points": 5,
+    "cout": ["Bains", ["pierre", 3]]
+  },
+
+  {
+    "age": 3,
+    "nom": "Jardin",
+    "type": "civil",
+    "joueur_min": 340,
+    "points": 5,
+    "cout": ["Statue", ["argile", 2], ["bois", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Hôtel de ville",
+    "type": "civil",
+    "joueur_min": 360,
+    "points": 6,
+    "cout": [
+      ["pierre", 2],
+      ["minerai", 1],
+      ["verre", 1]
+    ]
+  },
+  {
+    "age": 3,
+    "nom": "Sénat",
+    "type": "civil",
+    "joueur_min": 350,
+    "points": 6,
+    "cout": [
+      ["bois", 2],
+      ["minerai", 1],
+      ["pierre", 1]
+    ]
+  },
+  {
+    "age": 3,
+    "nom": "Panthéon",
+    "type": "civil",
+    "joueur_min": 360,
+    "points": 7,
+    "cout": ["Temple", ["argile", 2], ["minerai", 1], ["papyrus", 1], ["tissu", 1], ["verre", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Palace",
+    "type": "civil",
+    "joueur_min": 370,
+    "points": 8,
+    "cout": [
+      ["argile", 1],
+      ["bois", 1],
+      ["minerai", 1],
+      ["pierre", 1],
+      ["papyrus", 1],
+      ["tissu", 1],
+      ["verre", 1]
+    ]
+  },
+  {
+    "age": 1,
+    "nom": "Palissade",
+    "type": "militaire",
+    "joueur_min": 370,
+    "boucliers": 1,
+    "cout": [["bois", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Caserne",
+    "type": "militaire",
+    "joueur_min": 350,
+    "boucliers": 1,
+    "cout": [["minerai", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Tour de garde",
+    "type": "militaire",
+    "joueur_min": 340,
+    "boucliers": 1,
+    "cout": [["argile", 1]]
+  },
+
+  {
+    "age": 2,
+    "nom": "Écuries",
+    "type": "militaire",
+    "joueur_min": 350,
+    "boucliers": 2,
+    "cout": ["Officine", ["minerai", 2], ["argile", 1], ["bois", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "Champs de tir",
+    "type": "militaire",
+    "joueur_min": 360,
+    "boucliers": 2,
+    "cout": ["Atelier", ["minerai", 1], ["bois", 2]]
+  },
+  {
+    "age": 2,
+    "nom": "Muraille",
+    "type": "militaire",
+    "joueur_min": 370,
+    "boucliers": 2,
+    "cout": [["pierre", 3]]
+  },
+  {
+    "age": 2,
+    "nom": "Place d'armes",
+    "type": "militaire",
+    "joueur_min": 467,
+    "boucliers": 2,
+    "cout": [
+      ["minerai", 2],
+      ["bois", 1]
+    ]
+  },
+
+  {
+    "age": 3,
+    "nom": "Fortifications",
+    "type": "militaire",
+    "joueur_min": 370,
+    "boucliers": 3,
+    "cout": ["Muraille", ["minerai", 3], ["pierre", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Cirque",
+    "type": "militaire",
+    "joueur_min": 460,
+    "boucliers": 3,
+    "cout": ["Place d'armes", ["pierre", 3], ["minerai", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Arsenal",
+    "type": "militaire",
+    "joueur_min": 350,
+    "boucliers": 3,
+    "cout": [
+      ["minerai", 1],
+      ["bois", 2],
+      ["tissu", 1]
+    ]
+  },
+  {
+    "age": 3,
+    "nom": "Atelier de siège",
+    "type": "militaire",
+    "joueur_min": 350,
+    "boucliers": 3,
+    "cout": ["Laboratoire", ["bois", 1], ["argile", 3]]
+  },
+  {
+    "age": 1,
+    "nom": "Officine",
+    "type": "scientifique",
+    "joueur_min": 350,
+    "symbole": "geometrie",
+    "cout": [["tissu", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Atelier",
+    "type": "scientifique",
+    "joueur_min": 370,
+    "symbole": "roue",
+    "cout": [["verre", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Scriptorium",
+    "type": "scientifique",
+    "joueur_min": 340,
+    "symbole": "tablette",
+    "cout": [["papyrus", 1]]
+  },
+
+  {
+    "age": 2,
+    "nom": "Dispensaire",
+    "type": "scientifique",
+    "joueur_min": 340,
+    "symbole": "geometrie",
+    "cout": ["Officine", ["minerai", 2], ["verre", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "Laboratoire",
+    "type": "scientifique",
+    "joueur_min": 350,
+    "symbole": "roue",
+    "cout": ["Atelier", ["argile", 2], ["papyrus", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "Bibliothèque",
+    "type": "scientifique",
+    "joueur_min": 360,
+    "symbole": "tablette",
+    "cout": ["Scriptorium", ["pierre", 2], ["tissu", 1]]
+  },
+  {
+    "age": 2,
+    "nom": "École",
+    "type": "scientifique",
+    "joueur_min": 370,
+    "symbole": "tablette",
+    "cout": [
+      ["bois", 1],
+      ["papyrus", 1]
+    ]
+  },
+
+  {
+    "age": 3,
+    "nom": "Loge",
+    "type": "scientifique",
+    "joueur_min": 360,
+    "symbole": "geometrie",
+    "cout": ["Dispensaire", ["argile", 2], ["tissu", 1], ["papyrus", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Académie",
+    "type": "scientifique",
+    "joueur_min": 370,
+    "symbole": "geometrie",
+    "cout": ["École", ["pierre", 3], ["verre", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Observatoire",
+    "type": "scientifique",
+    "joueur_min": 37,
+    "symbole": "roue",
+    "cout": ["Laboratoire", ["minerai", 2], ["tissu", 1], ["verre", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Étude",
+    "type": "scientifique",
+    "joueur_min": 350,
+    "symbole": "roue",
+    "cout": ["École", ["bois", 1], ["papyrus", 1], ["tissu", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Université",
+    "type": "scientifique",
+    "joueur_min": 340,
+    "symbole": "tablette",
+    "cout": ["Bibliothèque", ["bois", 2], ["verre", 1], ["papyrus", 1]]
+  },
+  {
+    "age": 1,
+    "nom": "Taverne",
+    "type": "commerciale",
+    "joueur_min": 457,
+    "gain": "5 pièces",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Marché",
+    "type": "commerciale",
+    "joueur_min": 360,
+    "gain": "Achat à 1 pièce des produits manufacturés",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Comptoir ouest",
+    "type": "commerciale",
+    "joueur_min": 370,
+    "gain": "Achat à 1 pièce des matières premières",
+    "cout": []
+  },
+  {
+    "age": 1,
+    "nom": "Comptoir est",
+    "type": "commerciale",
+    "joueur_min": 370,
+    "gain": "Achat à 1 pièce des matières premières",
+    "cout": []
+  },
+
+  {
+    "age": 2,
+    "nom": "Caravansérail",
+    "type": "commerciale",
+    "joueur_min": 356,
+    "gain": "Commerce d'une matière première au choix",
+    "cout": ["Marché", ["argile", 2]]
+  },
+  {
+    "age": 2,
+    "nom": "Forum",
+    "type": "commerciale",
+    "joueur_min": 367,
+    "gain": "Commerce d'un produit manufacturé au choix",
+    "cout": ["Comptoir est", ["bois", 2]]
+  },
+  {
+    "age": 2,
+    "nom": "Vignoble",
+    "type": "commerciale",
+    "joueur_min": 360,
+    "gain": "Gain d'une pièce pour chaque carte marron de moi et mes voisins",
+    "cout": []
+  },
+  {
+    "age": 2,
+    "nom": "Bazar",
+    "type": "commerciale",
+    "joueur_min": 470,
+    "gain": "Gain d'une pièce pour chaque carte grise de moi et mes voisins",
+    "cout": []
+  },
+
+  {
+    "age": 3,
+    "nom": "Phare",
+    "type": "commerciale",
+    "joueur_min": 360,
+    "gain": "Gain d'une pièce et d'un point pour chacune de mes cartes jaune",
+    "cout": ["Caravansérail", ["pierre", 1], ["verre", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Port",
+    "type": "commerciale",
+    "joueur_min": 340,
+    "gain": "Gain d'une pièce et d'un point pour chacune de mes cartes marron",
+    "cout": ["Forum", ["bois", 1], ["minerai", 1], ["tissu", 1]]
+  },
+  {
+    "age": 3,
+    "nom": "Chambre de commerce",
+    "type": "commerciale",
+    "joueur_min": 460,
+    "gain": "Gain de 2 pièces et 2 points pour chacune de mes cartes grises",
+    "cout": [
+      ["argile", 2],
+      ["papyrus", 1]
+    ]
+  },
+  {
+    "age": 3,
+    "nom": "Arène",
+    "type": "commerciale",
+    "joueur_min": 350,
+    "gain": "Gain de 3 pièces et d'un point pour chaque étage de ma merveille",
+    "cout": ["Dispensaire", ["pierre", 2], ["minerai", 1]]
+  },
+  {
+    "nom": "Travailleurs",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque carte marron de mes voisins",
+    "cout": [
+      ["pierre", 1],
+      ["minerai", 2],
+      ["argile", 1],
+      ["bois", 1]
+    ]
+  },
+  {
+    "nom": "Artisans",
+    "type": "guilde",
+    "gain": "Gain de 2 points pour chaque carte grise de mes voisins",
+    "cout": [
+      ["pierre", 2],
+      ["minerai", 2]
+    ]
+  },
+  {
+    "nom": "Magistrats",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque carte bleu de mes voisins",
+    "cout": [
+      ["bois", 3],
+      ["tissu", 1],
+      ["pierre", 1]
+    ]
+  },
+  {
+    "nom": "Commerçants",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque carte jaune de mes voisins",
+    "cout": [
+      ["verre", 1],
+      ["tissu", 1],
+      ["papyrus", 1]
+    ]
+  },
+  {
+    "nom": "Batisseurs",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque étage de merveille construit de moi et mes voisins",
+    "cout": [
+      ["pierre", 2],
+      ["argile", 2],
+      ["verre", 1]
+    ]
+  },
+  {
+    "nom": "Espions",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque carte rouge de mes voisins",
+    "cout": [
+      ["argile", 3],
+      ["verre", 1]
+    ]
+  },
+  {
+    "nom": "Philosophes",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque carte vertes de mes voisins",
+    "cout": [
+      ["argile", 3],
+      ["tissu", 1],
+      ["papyrus", 1]
+    ]
+  },
+  {
+    "nom": "Scientifiques",
+    "type": "guilde",
+    "gain": "Gain d'un symbole de recherche au choix",
+    "cout": [
+      ["bois", 2],
+      ["minerai", 2],
+      ["papyrus", 1]
+    ]
+  },
+  {
+    "nom": "Armateurs",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chacune de mes cartes marron, grises et violettes",
+    "cout": [
+      ["bois", 3],
+      ["papyrus", 1],
+      ["verre", 1]
+    ]
+  },
+  {
+    "nom": "Stratèges",
+    "type": "guilde",
+    "gain": "Gain d'un point pour chaque défaites militaires de mes voisins",
+    "cout": [
+      ["pierre", 1],
+      ["minerai", 2],
+      ["tissu", 1]
+    ]
+  }
+]
