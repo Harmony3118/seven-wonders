@@ -10,30 +10,30 @@ Ensuite le jeu consiste à sélectionner une carte parmi un paquet, en affichant
 
 ### Étapes
 
-- [ ] Page d'accueil
+- [x] Page d'accueil
   - [x] Nombre de joueurs
   - [x] Extension à sélectionner
-  - [ ] Sélection plateaux hasard / choix
-    - [ ] Pour le choix = sélection du plateau par joueur
   - [x] Bouton lancer la partie
 - [ ] Principe de jeu
-  - [ ] Définir les propriétés d'une carte (dans une class)
+  - [x] Définir les propriétés d'une carte (dans une class)
     - [x] Age
     - [x] Nom
-    - [ ] Type (ressources primaire, ressources secondaires, commerciales, culturelles, scientifiques, guildes) + couleur
+    - [x] Type (ressources primaire, ressources secondaires, commerciales, culturelles, scientifiques, guildes) + couleur
     - [x] Prix (Ressource(s) ou carte spécifique)
-    - [ ] Apport(s)
+    - [x] Apport(s)
   - [x] Sans-doute définir une sous-class pour chaque type de carte => apports spécifique
   - [x] Liste de toutes les cartes
   - [ ] Paquet de cartes (class pour un paquet ?)
+    - [x] Définir les cartes du jeu en fonction du nombre de joueurs
+    - [ ] Créer les n paquets
     - [ ] Retirer une carte lorsque sélectionnée
     - [ ] Paquet vide lorsque n == 1
   - [ ] Sous-class pour diff paquet distribution et cartes sélectionnés
     - [ ] Pour carte sélectionnée, on peut pas voir 2 fois la même carte
 - [ ] Page de jeu
-  - [x] Afficher les cartes du paquet
-  - [x] Afficher le nom de la carte sélectionnée
-  - [ ] Afficher le nom/numéro du joueur en cours
+  - [ ] Afficher les cartes du paquet
+  - [ ] Afficher le nom de la carte sélectionnée
+  - [x] Afficher le nom/numéro du joueur en cours
   - [ ] Afficher les cartes déjà sélectionnées ?
 
 ## Plus tard
@@ -42,4 +42,26 @@ Pièce
 
 Comprendre `game.ts`, à quoi ça sert, comment ça fonctionne ?
 
-## V1 - Plus mais je sais pas encore quoi
+## V1 - Développer sa merveille
+
+### Etapes
+
+- [ ] Définir les plateaux
+
+- [ ] Sélection plateaux
+  - [ ] Pour le choix = sélection du plateau par joueur
+  - [ ] Pour le choix au hasard
+- [ ] Ajout des pièces
+- [ ] Vérification des couts (est-ce qu'on a les ressources ou est ce qu'on a la carte parent)
+
+- [ ] Appliquer les effets des cartes commerces sur la merveille
+
+## V2 - Les échanges
+
+### Etapes
+
+- [ ] Acheter des ressources aux voisins
+
+- [ ] Vérifier les resssources des voisins
+- [ ] Appliquer les effets des cartes commerces sur les voisins
+- [ ] Appliquer les effets des cartes guildes

@@ -81,54 +81,61 @@ export function creerCartes(nb_joueurs: number): Carte[] {
   // Data JSON
   const catalogue_cartes = cartesJson as DefinitionCarte[]
 
-  return catalogue_cartes.map((carte) => {
-    switch (carte.type) {
-      case 'matierePremiere':
-        return new CarteMatierePremiere(
-          carte.age,
-          carte.nom,
-          ressources[carte.ressource],
-          carte.quantite,
-          carte.ressource2 ? ressources[carte.ressource2] : undefined,
-          carte.quantite2,
-        )
-      case 'produitManufacture':
-        return new CarteProduitManufacture(
-          carte.age,
-          carte.nom,
-          ressources[carte.ressource],
-        )
-      case 'civil':
-        return new CarteCivil(
-          carte.age,
-          carte.nom,
-          carte.points,
-          creerCout(carte.cout),
-        )
-      case 'militaire':
-        return new CarteMilitaire(
-          carte.age,
-          carte.nom,
-          carte.boucliers,
-          creerCout(carte.cout),
-        )
-      case 'scientifique':
-        return new CarteScientifique(
-          carte.age,
-          carte.nom,
-          recherches[carte.symbole],
-          creerCout(carte.cout),
-        )
-      case 'commerciale':
-        return new CarteCommerciale(
-          carte.age,
-          carte.nom,
-          carte.gain,
-          creerCout(carte.cout),
-        )
-      case 'guilde':
-        return new CarteGuilde(carte.nom, carte.gain, creerCout(carte.cout))
-    }
+  return catalogue_cartes.flatMap((carte) => {
+    // Chaque carte a une valeur de 3 chiffres associés.
+    // Chaque chiffre correspond au nombre de joueurs minimal pour inclure la carte dans la partie.
+    // Par exemple, 360 signifie 1 fois si 3 joueurs ou +, 2 fois si 6 joueurs ou +
+    // Si le chiffre des unités est 5, ceux des dizaines et des centaines est plus petit donc il y a 3 fois cette carte s'il y a 5 joueurs ou plus.
+    // Si on note j le nombre de joueurs et abc les 3 chiffres (a<b<c), on a les occurences suivantes :
+    //  si c < j alors occ = 3
+    //  sinon si b < j <=> b*10 < j*10 <=> b*10+c < j*10+c < j*10+10 = (j+1)*10 alors occ = 2
+    //  sinon si a < j <=> a*100 < j*100 <=> b*100+bc < j*100+bc < (j+1)*100 alors occ = 1
+    // Pour optimiser le calcul (minimiser le nb de comparaison en moyenne), les tests sont effectués par la négation
+    const dizaine = carte.joueur_min % 100
+    const unite = carte.joueur_min % 10
+
+    console.log(carte.nom)
+
+    const occurence =
+      carte.joueur_min >= (nb_joueurs + 1) * 100
+        ? 0
+        : dizaine >= (nb_joueurs + 1) * 10 || dizaine == 0
+          ? 1
+          : unite >= nb_joueurs + 1 || unite == 0
+            ? 2
+            : 3
+    const test = carte.cout
+
+    return Array.from({ length: occurence }).map(() => {
+      switch (carte.type) {
+        case 'matierePremiere':
+          return new CarteMatierePremiere(
+            carte.age,
+            carte.nom,
+            ressources[carte.ressource],
+            carte.quantite,
+            carte.ressource2 ? ressources[carte.ressource2] : undefined,
+            carte.quantite2,
+          )
+        case 'produitManufacture':
+          return new CarteProduitManufacture(carte.age, carte.nom, ressources[carte.ressource])
+        case 'civil':
+          return new CarteCivil(carte.age, carte.nom, carte.points, creerCout(carte.cout))
+        case 'militaire':
+          return new CarteMilitaire(carte.age, carte.nom, carte.boucliers, creerCout(carte.cout))
+        case 'scientifique':
+          return new CarteScientifique(
+            carte.age,
+            carte.nom,
+            recherches[carte.symbole],
+            creerCout(carte.cout),
+          )
+        case 'commerciale':
+          return new CarteCommerciale(carte.age, carte.nom, carte.gain, creerCout(carte.cout))
+        case 'guilde':
+          return new CarteGuilde(carte.nom, carte.gain, creerCout(carte.cout))
+      }
+    })
   })
 }
 
