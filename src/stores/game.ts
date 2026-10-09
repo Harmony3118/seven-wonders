@@ -1,4 +1,6 @@
 import { reactive } from 'vue'
+import { Carte } from '../types'
+import { creerCartes } from '../data/cartes'
 
 export type GameConfiguration = {
   playerCount: number
@@ -8,6 +10,7 @@ export type GameConfiguration = {
 export type GameSession = GameConfiguration & {
   id: string
   players: number[]
+  deck_cartes: { 1: Carte[]; 2: Carte[]; 3: Carte[] }
 }
 
 const storageKey = 'seven-wonders-game-session'
@@ -49,6 +52,7 @@ export function createGame(configuration: GameConfiguration): GameSession {
     playerCount: configuration.playerCount,
     extensions: [...configuration.extensions],
     players: Array.from({ length: configuration.playerCount }, (_, index) => index + 1),
+    deck_cartes: creerCartes(configuration.playerCount),
   }
 
   Object.assign(gameSession, session)

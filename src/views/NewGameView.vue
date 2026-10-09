@@ -24,7 +24,7 @@ const startGame = async () => {
 
 <template>
   <div class="about grid">
-    <p>Nombre de joueurs : {{ nbJoueurs }}</p>
+    <p>Nombre de joueurs : {{ nbJoueurs }}{{ nbJoueurs == 2 ? ' + 1 virtuel' : '' }}</p>
     <Slider v-model="nbJoueurs" :step="1" :min="2" :max="7" />
     <h2>Extension</h2>
     <div :style="{ display: 'flex', flexDirection: 'column', gap: '0.5em' }">

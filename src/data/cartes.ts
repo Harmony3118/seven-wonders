@@ -22,7 +22,7 @@ type NomRessource =
   | 'pieces'
 
 type DefinitionCommune = {
-  age: number
+  age: 1 | 2 | 3
   joueur_min: number
   nom: string
   cout: [string | [NomRessource, number]]
@@ -77,11 +77,30 @@ function creerCout(cout: (string | [NomRessource, number])[]): Cout {
   return parent === undefined ? new Cout(...paires) : new Cout(parent, ...paires)
 }
 
-export function creerCartes(nb_joueurs: number): Carte[] {
+function melangerPaquet(paquet: Carte[]) {
+  const nb_cartes = paquet.length
+
+  for (let i = nb_cartes - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i)
+    const tmp = paquet[j]
+    paquet[j] = paquet[i]
+    paquet[i] = tmp
+  }
+}
+
+export function creerCartes(nb_joueurs: number): { 1: Carte[]; 2: Carte[]; 3: Carte[] } {
   // Data JSON
   const catalogue_cartes = cartesJson as DefinitionCarte[]
 
-  return catalogue_cartes.flatMap((carte) => {
+  const age_deck: { 1: Carte[]; 2: Carte[]; 3: Carte[] } = {
+    1: [],
+    2: [],
+    3: [],
+  }
+
+  // catalogue_cartes.flatMap((carte) => {
+  catalogue_cartes.forEach((carte) => {
+    // for(var carte of catalogue_cartes) {
     // Chaque carte a une valeur de 3 chiffres associés.
     // Chaque chiffre correspond au nombre de joueurs minimal pour inclure la carte dans la partie.
     // Par exemple, 360 signifie 1 fois si 3 joueurs ou +, 2 fois si 6 joueurs ou +
@@ -104,39 +123,64 @@ export function creerCartes(nb_joueurs: number): Carte[] {
           : unite >= nb_joueurs + 1 || unite == 0
             ? 2
             : 3
-    const test = carte.cout
 
-    return Array.from({ length: occurence }).map(() => {
+    // return Array.from({ length: occurence }).map(() => {
+    for (let i = 0; i < occurence; i++) {
       switch (carte.type) {
         case 'matierePremiere':
-          return new CarteMatierePremiere(
-            carte.age,
-            carte.nom,
-            ressources[carte.ressource],
-            carte.quantite,
-            carte.ressource2 ? ressources[carte.ressource2] : undefined,
-            carte.quantite2,
+          age_deck[carte.age].push(
+            new CarteMatierePremiere(
+              carte.age,
+              carte.nom,
+              ressources[carte.ressource],
+              carte.quantite,
+              carte.ressource2 ? ressources[carte.ressource2] : undefined,
+              carte.quantite2,
+            ),
           )
+          break
         case 'produitManufacture':
-          return new CarteProduitManufacture(carte.age, carte.nom, ressources[carte.ressource])
-        case 'civil':
-          return new CarteCivil(carte.age, carte.nom, carte.points, creerCout(carte.cout))
-        case 'militaire':
-          return new CarteMilitaire(carte.age, carte.nom, carte.boucliers, creerCout(carte.cout))
-        case 'scientifique':
-          return new CarteScientifique(
-            carte.age,
-            carte.nom,
-            recherches[carte.symbole],
-            creerCout(carte.cout),
+          age_deck[carte.age].push(
+            new CarteProduitManufacture(carte.age, carte.nom, ressources[carte.ressource]),
           )
+          break
+        case 'civil':
+          age_deck[carte.age].push(
+            new CarteCivil(carte.age, carte.nom, carte.points, creerCout(carte.cout)),
+          )
+          break
+        case 'militaire':
+          age_deck[carte.age].push(
+            new CarteMilitaire(carte.age, carte.nom, carte.boucliers, creerCout(carte.cout)),
+          )
+          break
+        case 'scientifique':
+          age_deck[carte.age].push(
+            new CarteScientifique(
+              carte.age,
+              carte.nom,
+              recherches[carte.symbole],
+              creerCout(carte.cout),
+            ),
+          )
+          break
         case 'commerciale':
-          return new CarteCommerciale(carte.age, carte.nom, carte.gain, creerCout(carte.cout))
+          age_deck[carte.age].push(
+            new CarteCommerciale(carte.age, carte.nom, carte.gain, creerCout(carte.cout)),
+          )
+          break
         case 'guilde':
-          return new CarteGuilde(carte.nom, carte.gain, creerCout(carte.cout))
+          age_deck[3].push(new CarteGuilde(carte.nom, carte.gain, creerCout(carte.cout)))
+          break
       }
-    })
+    }
   })
+
+  for (let i = 1; i <= 3; i++) {
+    melangerPaquet(age_deck[i as 1 | 2 | 3])
+  }
+
+  return age_deck
 }
 
 // export const catalogue_cartes = [
