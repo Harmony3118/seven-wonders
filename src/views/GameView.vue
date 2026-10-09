@@ -1,21 +1,17 @@
-<!-- <script setup></script>
-
-<template>
-  <div>
-    <h1>Page de jeu en cours de construction 🚧</h1>
-  </div>
-</template> -->
-
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { gameSession, hasGameSession } from '@/stores/game'
+import CarteView from '../components/CarteAge.vue'
 
 const route = useRoute()
 const gameId = computed(() => String(route.params.gameId))
-const playerId = computed(() => String(route.params.playerId))
+const playerId = computed(() => Number(route.params.playerId))
 const isKnownGame = computed(() => hasGameSession(gameId.value))
+
+const nb_carte_tour = 7
+const nb_cartes_totale = 7
+const i_départ = ((playerId.value + nb_carte_tour) % gameSession.playerCount) * nb_cartes_totale
 </script>
 
 <template>
@@ -35,7 +31,22 @@ const isKnownGame = computed(() => hasGameSession(gameId.value))
         Joueur {{ player }}
       </RouterLink>
     </nav>
+    <div v-for="age in 3">
+      <h2>Carte de l'age {{ age }}</h2>
+      <div
+        v-for="i in nb_carte_tour"
+        :style="{ display: 'grid', flexDirection: 'row', gap: '0.5em' }"
+      >
+        <CarteView
+          v-if="gameSession.deck_cartes"
+          :carte="gameSession.deck_cartes[age as 1 | 2 | 3][i_départ + i - 1]"
+        />
+        <!-- <div v-for="carte in gameSession.deck_cartes[1]" :key="carte.nom">
+        <CarteView :carte="carte" /> -->
+      </div>
+    </div>
   </div>
+
   <div v-else>
     <h1>Partie introuvable</h1>
     <p>Cette session n'est pas disponible dans ce navigateur.</p>
