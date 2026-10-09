@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { Carte } from '../types'
-import { creerCartes } from '../data/cartes'
+import { chooseCardRequest, createGameRequest, getGameRequest } from '@/services/api'
 
 export type GameConfiguration = {
   playerCount: number
@@ -11,52 +11,33 @@ export type GameSession = GameConfiguration & {
   id: string
   players: number[]
   deck_cartes: { 1: Carte[]; 2: Carte[]; 3: Carte[] }
+  choices: { playerId: number; age: number; cardIndex: number }[]
 }
 
-const storageKey = 'seven-wonders-game-session'
+export const gameSession = reactive<Partial<GameSession>>({})
 
-function readStoredSession(): Partial<GameSession> {
-  if (typeof localStorage === 'undefined') return {}
-
-  try {
-    const stored = localStorage.getItem(storageKey)
-    if (!stored) return {}
-
-    const session: unknown = JSON.parse(stored)
-    if (
-      typeof session === 'object' &&
-      session !== null &&
-      'id' in session &&
-      typeof session.id === 'string' &&
-      'playerCount' in session &&
-      typeof session.playerCount === 'number' &&
-      'extensions' in session &&
-      Array.isArray(session.extensions) &&
-      'players' in session &&
-      Array.isArray(session.players)
-    ) {
-      return session as GameSession
-    }
-  } catch {
-    localStorage.removeItem(storageKey)
-  }
-
-  return {}
-}
-
-export const gameSession = reactive<Partial<GameSession>>(readStoredSession())
-
-export function createGame(configuration: GameConfiguration): GameSession {
-  const session: GameSession = {
-    id: crypto.randomUUID(),
-    playerCount: configuration.playerCount,
-    extensions: [...configuration.extensions],
-    players: Array.from({ length: configuration.playerCount }, (_, index) => index + 1),
-    deck_cartes: creerCartes(configuration.playerCount),
-  }
-
+function updateGameSession(session: GameSession) {
   Object.assign(gameSession, session)
-  localStorage.setItem(storageKey, JSON.stringify(session))
+}
+
+export async function createGame(configuration: GameConfiguration): Promise<GameSession> {
+  const session = await createGameRequest(configuration)
+  updateGameSession(session)
+  return session
+}
+
+export async function loadGame(gameId: string): Promise<GameSession> {
+  const session = await getGameRequest(gameId)
+  updateGameSession(session)
+  return session
+}
+
+export async function chooseCard(
+  gameId: string,
+  action: { type: 'choose-card'; playerId: number; age: number; cardIndex: number },
+): Promise<GameSession> {
+  const session = await chooseCardRequest(gameId, action)
+  updateGameSession(session)
   return session
 }
 

@@ -8,17 +8,28 @@ const nbJoueurs = ref(3)
 
 const selectedExtention = ref(['Base'])
 const router = useRouter()
+const errorMessage = ref('')
+const isStarting = ref(false)
 
 const startGame = async () => {
-  const game = createGame({
-    playerCount: nbJoueurs.value,
-    extensions: selectedExtention.value,
-  })
+  isStarting.value = true
+  errorMessage.value = ''
 
-  await router.push({
-    name: 'player-game',
-    params: { gameId: game.id, playerId: '1' },
-  })
+  try {
+    const game = await createGame({
+      playerCount: nbJoueurs.value,
+      extensions: selectedExtention.value,
+    })
+
+    await router.push({
+      name: 'player-game',
+      params: { gameId: game.id, playerId: '1' },
+    })
+  } catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : 'Impossible de créer la partie.'
+  } finally {
+    isStarting.value = false
+  }
 }
 </script>
 
@@ -53,6 +64,9 @@ const startGame = async () => {
       </div>
     </div>
     <span>Extensions sélectionnées : {{ selectedExtention.join(', ') }}</span>
-    <button @click="startGame">Démarrer la partie</button>
+    <p v-if="errorMessage" role="alert">{{ errorMessage }}</p>
+    <button :disabled="isStarting" @click="startGame">
+      {{ isStarting ? 'Création...' : 'Démarrer la partie' }}
+    </button>
   </div>
 </template>
