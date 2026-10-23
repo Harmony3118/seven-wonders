@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { Carte } from '../types'
-import { creerCartes } from '../data/cartes'
+import { creerCartes } from '../../back/src/game.ts/cartes'
 
 export type GameConfiguration = {
   playerCount: number

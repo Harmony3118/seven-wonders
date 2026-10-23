@@ -8,11 +8,7 @@
 //   Guilde,
 // }
 
-enum Age {
-  I,
-  II,
-  III,
-}
+export type Age = 1 | 2 | 3
 
 export enum Ressources {
   ARGILE,

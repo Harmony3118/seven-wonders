@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { gameSession, hasGameSession } from '@/stores/game'
 import CarteView from '../components/CarteAge.vue'
+import type { Age } from '../types'
 
 const route = useRoute()
 const gameId = computed(() => String(route.params.gameId))
@@ -39,7 +40,7 @@ const i_départ = ((playerId.value + nb_carte_tour) % gameSession.playerCount) *
       >
         <CarteView
           v-if="gameSession.deck_cartes"
-          :carte="gameSession.deck_cartes[age as 1 | 2 | 3][i_départ + i - 1]"
+          :carte="gameSession.deck_cartes[age as Age][i_départ + i - 1]"
         />
         <!-- <div v-for="carte in gameSession.deck_cartes[1]" :key="carte.nom">
         <CarteView :carte="carte" /> -->
