@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Carte } from '../types'
+import type { Carte } from '../../../shared/types'
 
 defineProps<{ carte: Carte }>()
 </script>

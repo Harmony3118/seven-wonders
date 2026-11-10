@@ -1,5 +1,5 @@
 import cartesJson from './cartes.json'
-import { Ressources, Cout, Recherche, Carte } from '../types'
+import { Age, Ressources, Cout, Recherche, Carte } from '../../../shared/types'
 import {
   CarteMatierePremiere,
   CarteProduitManufacture,
@@ -8,7 +8,7 @@ import {
   CarteScientifique,
   CarteCommerciale,
   CarteGuilde,
-} from '../types'
+} from '../../../shared/types'
 
 // Typage data JSON
 type NomRessource =
@@ -22,7 +22,7 @@ type NomRessource =
   | 'pieces'
 
 type DefinitionCommune = {
-  age: 1 | 2 | 3
+  age: Age
   joueur_min: number
   nom: string
   cout: [string | [NomRessource, number]]
@@ -177,7 +177,7 @@ export function creerCartes(nb_joueurs: number): { 1: Carte[]; 2: Carte[]; 3: Ca
   })
 
   for (let i = 1; i <= 3; i++) {
-    melangerPaquet(age_deck[i as 1 | 2 | 3])
+    melangerPaquet(age_deck[i as Age])
   }
 
   return age_deck

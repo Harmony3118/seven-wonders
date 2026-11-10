@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { Carte } from '../types'
+import { Carte } from '../../../shared/types'
 import { compile } from '@vue/compiler-dom'
 
 type ConfigurationAge = {

@@ -1,65 +1,40 @@
-import { reactive } from 'vue'
-import { Carte } from '../types'
-import { creerCartes } from '../../back/src/game.ts/cartes'
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import * as gameApi from '@/services/gameApi'
+import { loadIdentity, saveIdentity } from '@/services/identityStorage'
+import type { CreateGameResponse, GameConfiguration, Identity } from '@/types'
 
-export type GameConfiguration = {
-  playerCount: number
-  extensions: string[]
-}
+export const useGameStore = defineStore('game', () => {
+  // Etat
+  const identity = ref<Identity | null>(loadIdentity())
+  const loading = ref(false)
+  const error = ref<string | null>(null)
 
-export type GameSession = GameConfiguration & {
-  id: string
-  players: number[]
-  deck_cartes: { 1: Carte[]; 2: Carte[]; 3: Carte[] }
-}
+  function setIdentity(value: Identity) {
+    identity.value = value
+    saveIdentity(value)
+  }
 
-const storageKey = 'seven-wonders-game-session'
+  async function createGame(config: GameConfiguration): Promise<CreateGameResponse> {
+    loading.value = true
+    error.value = null
 
-function readStoredSession(): Partial<GameSession> {
-  if (typeof localStorage === 'undefined') return {}
-
-  try {
-    const stored = localStorage.getItem(storageKey)
-    if (!stored) return {}
-
-    const session: unknown = JSON.parse(stored)
-    if (
-      typeof session === 'object' &&
-      session !== null &&
-      'id' in session &&
-      typeof session.id === 'string' &&
-      'playerCount' in session &&
-      typeof session.playerCount === 'number' &&
-      'extensions' in session &&
-      Array.isArray(session.extensions) &&
-      'players' in session &&
-      Array.isArray(session.players)
-    ) {
-      return session as GameSession
+    try {
+      const created = await gameApi.createGame(config)
+      const me = created.players[0]
+      setIdentity({ gameId: created.gameId, playerId: me.playerId, token: me.token })
+      return created
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Erreur inconnue'
+      throw e
+    } finally {
+      loading.value = false
     }
-  } catch {
-    localStorage.removeItem(storageKey)
   }
 
-  return {}
-}
-
-export const gameSession = reactive<Partial<GameSession>>(readStoredSession())
-
-export function createGame(configuration: GameConfiguration): GameSession {
-  const session: GameSession = {
-    id: crypto.randomUUID(),
-    playerCount: configuration.playerCount,
-    extensions: [...configuration.extensions],
-    players: Array.from({ length: configuration.playerCount }, (_, index) => index + 1),
-    deck_cartes: creerCartes(configuration.playerCount),
+  function isCurrentGame(gameId: string): boolean {
+    return identity.value?.gameId === gameId
   }
 
-  Object.assign(gameSession, session)
-  localStorage.setItem(storageKey, JSON.stringify(session))
-  return session
-}
-
-export function hasGameSession(gameId: string): boolean {
-  return gameSession.id === gameId
-}
+  return { identity, loading, error, createGame, setIdentity, isCurrentGame }
+})

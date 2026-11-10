@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useGameStore } from '@/stores/game.ts'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,11 +24,20 @@ const router = createRouter({
       component: () => import('../views/NewGameView.vue'),
     },
     {
-      path: '/game/:gameId/player/:playerId',
+      path: '/game/:gameId/:playerId/:token',
       name: 'player-game',
       component: () => import('../views/GameView.vue'),
-    },
+    }
   ],
+})
+
+router.beforeEach((to) => {
+  if (to.name === 'game') {
+    const gameStore = useGameStore()
+    if (!gameStore.isCurrentGame(to.params.id as string)) {
+      return { name: 'new-game' }
+    }
+  }
 })
 
 export default router

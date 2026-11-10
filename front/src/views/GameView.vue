@@ -1,27 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { gameSession, hasGameSession } from '@/stores/game'
+// import { gameSession, hasGameSession } from '@/stores/game'
 import CarteView from '../components/CarteAge.vue'
-import type { Age } from '../types'
+import type { Age } from '../../../shared/types'
 
 const route = useRoute()
 const gameId = computed(() => String(route.params.gameId))
 const playerId = computed(() => Number(route.params.playerId))
-const isKnownGame = computed(() => hasGameSession(gameId.value))
+// const isKnownGame = computed(() => hasGameSession(gameId.value))
+const isKnownGame = true
 
 const nb_carte_tour = 7
 const nb_cartes_totale = 7
-const i_départ = ((playerId.value + nb_carte_tour) % gameSession.playerCount) * nb_cartes_totale
+// const i_départ = ((playerId.value + nb_carte_tour) % gameSession.playerCount) * nb_cartes_totale
 </script>
 
 <template>
   <div v-if="isKnownGame">
-    <p>Partie {{ gameSession.id }}</p>
+    <!-- <p>Partie {{ gameSession.id }}</p> -->
     <h1>Joueur {{ playerId }}</h1>
     <p>À toi de jouer.</p>
-    <p>Joueurs dans la partie : {{ gameSession.players?.join(', ') }}</p>
-    <nav aria-label="Pages des joueurs">
+    <!-- <p>Joueurs dans la partie : {{ gameSession.players?.join(', ') }}</p> -->
+    <!-- <nav aria-label="Pages des joueurs">
       <RouterLink
         v-for="player in gameSession.players"
         :key="player"
@@ -31,17 +32,18 @@ const i_départ = ((playerId.value + nb_carte_tour) % gameSession.playerCount) *
       >
         Joueur {{ player }}
       </RouterLink>
-    </nav>
+    </nav> -->
     <div v-for="age in 3">
       <h2>Carte de l'age {{ age }}</h2>
       <div
         v-for="i in nb_carte_tour"
         :style="{ display: 'grid', flexDirection: 'row', gap: '0.5em' }"
       >
-        <CarteView
+        {{ console.log(i) }}
+        <!-- <CarteView
           v-if="gameSession.deck_cartes"
           :carte="gameSession.deck_cartes[age as Age][i_départ + i - 1]"
-        />
+        /> -->
         <!-- <div v-for="carte in gameSession.deck_cartes[1]" :key="carte.nom">
         <CarteView :carte="carte" /> -->
       </div>
